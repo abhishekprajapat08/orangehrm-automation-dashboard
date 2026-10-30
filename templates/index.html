@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OrangeHRM Automation Dashboard</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">RPA</span> OrangeHRM Automation Dashboard</div>
+  <div id="overall-status" class="badge badge-idle">Idle</div>
+</header>
+
+<main class="grid">
+  <section class="card" id="form-card">
+    <h2>Automation Input</h2>
+    <form id="run-form" autocomplete="off" novalidate>
+      <fieldset>
+        <legend>Login Credentials</legend>
+        <label>Username
+          <input type="text" name="username" value="{{ default_username }}" placeholder="e.g. Admin" required>
+        </label>
+        <label>Password
+          <input type="password" name="password" placeholder="Enter password" required>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Employee Details</legend>
+        <div class="row">
+          <label>First Name
+            <input type="text" name="first_name" maxlength="30" required>
+          </label>
+          <label>Middle Name <small>(optional)</small>
+            <input type="text" name="middle_name" maxlength="30">
+          </label>
+        </div>
+        <div class="row">
+          <label>Last Name
+            <input type="text" name="last_name" maxlength="30" required>
+          </label>
+          <label>Employee ID
+            <div class="inline">
+              <input type="text" name="employee_id" maxlength="10" required>
+              <button type="button" id="gen-id" class="btn-ghost" title="Generate a unique ID">Generate</button>
+            </div>
+          </label>
+        </div>
+        <label>Employee list pages to extract
+          <select name="max_pages">
+            <option value="1" selected>1 page (up to 50 rows)</option>
+            <option value="2">2 pages</option>
+            <option value="3">3 pages</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <div id="form-errors" class="errors" hidden></div>
+      <button type="submit" id="submit-btn" class="btn-primary">Run Automation</button>
+    </form>
+  </section>
+
+  <section class="card" id="progress-card">
+    <h2>Automation Steps</h2>
+    <ol id="steps" class="steps">
+      <li class="step pending" data-name="Open Website">Open OrangeHRM website</li>
+      <li class="step pending" data-name="Login">Login with dashboard credentials</li>
+      <li class="step pending" data-name="Navigate to PIM">Navigate to PIM section</li>
+      <li class="step pending" data-name="Add Employee">Add new employee</li>
+      <li class="step pending" data-name="Verify Employee">Verify employee creation</li>
+      <li class="step pending" data-name="Extract Employee List">Extract employee list</li>
+      <li class="step pending" data-name="Logout">Logout</li>
+    </ol>
+    <div id="result-message" class="message" hidden></div>
+    <details id="log-box">
+      <summary>Execution log</summary>
+      <pre id="log-lines">No run yet.</pre>
+    </details>
+  </section>
+
+  <section class="card" id="employee-card">
+    <h2>Inserted Employee</h2>
+    <div id="employee-empty" class="empty">Run the automation to see the inserted employee here.</div>
+    <table id="employee-table" class="kv" hidden>
+      <tbody></tbody>
+    </table>
+    <div id="downloads" class="downloads" hidden></div>
+  </section>
+
+  <section class="card wide" id="list-card">
+    <div class="card-head">
+      <h2>Extracted Employee List <span id="row-count" class="count"></span></h2>
+      <input type="search" id="table-filter" placeholder="Filter rows..." hidden>
+    </div>
+    <div id="list-empty" class="empty">Extracted employee table data will appear here.</div>
+    <div class="table-wrap">
+      <table id="list-table" class="data" hidden>
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

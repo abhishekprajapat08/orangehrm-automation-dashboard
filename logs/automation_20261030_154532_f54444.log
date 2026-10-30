@@ -1,0 +1,18 @@
+2026-10-30 15:45:32,602 | INFO    | ======================================================================
+2026-10-30 15:45:32,603 | INFO    | Run 20261030_154532_f54444 | employee={'first_name': 'Abhishek', 'last_name': 'Prajapat', 'employee_id': 'E287886', 'middle_name': ''}
+2026-10-30 15:45:40,810 | INFO    | STEP 1 START  - Open Website
+2026-10-30 15:45:48,941 | INFO    | STEP 1 OK     - Open Website | Opened https://opensource-demo.orangehrmlive.com
+2026-10-30 15:45:48,941 | INFO    | STEP 2 START  - Login
+2026-10-30 15:45:53,631 | INFO    | STEP 2 OK     - Login | Logged in as 'admin'
+2026-10-30 15:45:53,633 | INFO    | STEP 3 START  - Navigate to PIM
+2026-10-30 15:45:57,812 | INFO    | STEP 3 OK     - Navigate to PIM | PIM module opened
+2026-10-30 15:45:57,812 | INFO    | STEP 4 START  - Add Employee
+2026-10-30 15:46:04,924 | INFO    | STEP 4 OK     - Add Employee | Saved Abhishek Prajapat (ID E287886)
+2026-10-30 15:46:04,924 | INFO    | STEP 5 START  - Verify Employee
+2026-10-30 15:46:10,737 | INFO    | STEP 5 OK     - Verify Employee | Found in list: Abhishek Prajapat
+2026-10-30 15:46:10,737 | INFO    | STEP 6 START  - Extract Employee List
+2026-10-30 15:46:13,953 | INFO    | Exported data -> C:\Users\Abhishek\Desktop\assignmnet\output\20261030_154532_f54444\employee_list.csv, C:\Users\Abhishek\Desktop\assignmnet\output\20261030_154532_f54444\employee_list.xlsx
+2026-10-30 15:46:14,017 | INFO    | STEP 6 OK     - Extract Employee List | Extracted 50 employee rows from 1 page(s)
+2026-10-30 15:46:14,017 | INFO    | STEP 7 START  - Logout
+2026-10-30 15:46:16,516 | INFO    | STEP 7 OK     - Logout | Logged out, back on login page
+2026-10-30 15:46:16,587 | INFO    | Run finished | success=True | Automation completed successfully.
